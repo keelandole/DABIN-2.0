@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D.A.B.I.N</title>
+
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+color: white;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.container {
+width: 100%;
+max-width: 900px;
+text-align: center;
+padding: 20px;
+}
+
+h1 {
+font-size: 4rem;
+letter-spacing: 8px;
+margin-bottom: 30px;
+}
+
+.card {
+background: rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(12px);
+border-radius: 20px;
+padding: 30px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+input {
+width: 80%;
+padding: 12px;
+margin: 10px 0;
+border-radius: 10px;
+border: none;
+outline: none;
+font-size: 1rem;
+}
+
+button {
+margin-top: 20px;
+padding: 12px 25px;
+border: none;
+border-radius: 12px;
+background: #00c6ff;
+background: linear-gradient(90deg, #00c6ff, #0072ff);
+color: white;
+font-size: 1rem;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover {
+transform: scale(1.05);
+}
+
+.hidden {
+display: none;
+}
+
+/* Dashboard styles */
+.progress-container {
+width: 100%;
+height: 40px;
+background: rgba(255,255,255,0.1);
+border-radius: 20px;
+overflow: hidden;
+margin: 30px 0;
+position: relative;
+}
+
+.progress-bar {
+height: 100%;
+width: 65%;
+background: linear-gradient(90deg, #00ff87, #60efff);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+}
+
+.stats {
+display: flex;
+justify-content: space-between;
+gap: 15px;
+margin-top: 20px;
+}
+
+.stat-box {
+flex: 1;
+padding: 15px;
+border-radius: 15px;
+background: rgba(255,255,255,0.08);
+}
+
+.stat-box h3 {
+font-size: 1rem;
+margin-bottom: 8px;
+opacity: 0.8;
+}
+
+.stat-box p {
+font-size: 1.2rem;
+font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- NAME INPUT SCREEN -->
+<div id="loginScreen" class="card">
+<h1>D.A.B.I.N</h1>
+<input type="text" id="firstName" placeholder="WIFI name">
+<br>
+<input type="text" id="lastName" placeholder="WIFI password">
+<br>
+<button onclick="enterSite()">Confirm</button>
+</div>
+
+<!-- DASHBOARD SCREEN -->
+<div id="dashboard" class="card hidden">
+<h1>D.A.B.I.N</h1>
+
+<div class="progress-container">
+<div class="progress-bar" id="progressBar">65%</div>
+</div>
+
+<button onclick="printReceipt()">Print Bin Receipt</button>
+
+<div class="stats">
+<div class="stat-box">
+<h3>Avg Bin Weight</h3>
+<p>12.4 kg</p>
+</div>
+
+<div class="stat-box">
+<h3>Time Since Last Emptied</h3>
+<p>3 days</p>
+</div>
+
+<div class="stat-box">
+<h3>Time Since Last Use</h3>
+<p>5 hours</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function enterSite() {
+const first = document.getElementById("firstName").value.trim();
+const last = document.getElementById("lastName").value.trim();
+
+if (first === "" || last === "") {
+alert("Please enter both first and last name.");
+return;
+}
+
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("dashboard").classList.remove("hidden");
+}
+
+function printReceipt() {
+window.print();
+}
+</script>
+
+</body>
+</html>
